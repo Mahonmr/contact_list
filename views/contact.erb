@@ -1,0 +1,37 @@
+<h1>Contact</h1>
+
+<div class="">
+  <h3 for="">First Name:</h3>
+  <h5><%= @first_name %></h5>
+</div>
+<div class="">
+  <h3 for="">Last Name:</h3>
+  <h5><%= @last_name %></h5>
+</div>
+<div class="">
+  <h3 for="">Job Title:</h3>
+  <h5><%= @job_title %></h5>
+</div>
+<div class="">
+  <h3 for="">Company:</h3>
+  <h5><%= @company %></h5>
+</div>
+
+<h3>Numbers: </h3>
+ <% @phone_number.each do |number| %>
+  <ul>
+    <h5><%= number %></h5>
+  </ul>
+<%end%>
+<h3>Email: </h3>
+  <% @email_address.each do |email| %>
+  <ul>
+    <h5><%= email %></h5>
+  </ul>
+<%end%>
+<h3>Mailing: </h3>
+  <% @mailing_address.each do |mail| %>
+  <ul>
+    <h5><%= mail %></h5>
+  </ul>
+<%end%>
