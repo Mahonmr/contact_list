@@ -2,24 +2,37 @@ require 'rspec'
 require 'contact'
 require 'mailing_address'
 require 'phone_number'
+require 'email_address'
 
 describe Contact do
   describe "#contact_list" do
     it 'shows the contact list saved in contacts' do
       phone_number = Phone_Number.new( {"area_code" => 123, "number" => 4541234})
       phone_number_two = Phone_Number.new( {"area_code" => 342, "number" => 2344423})
+      email_address = Email_Address.new( {"email_address" => "email@gmail.com"})
+
+
+      mailing = Mailing_Address.new( {"street_address" => "400 SW 6th",
+                                      "city" => "Portland",
+                                      "state" => "Oregon",
+                                      "zip" => 97219,
+                                      "type" => "school "})
 
       new_contact = Contact.new({ "first_name" => "bob",
                                   "last_name" => "jim",
                                   "job_title" => "manager",
                                   "company" => "water sports inc",
-                                  "phone" => [phone_number, phone_number_two]})
+                                  "phone" => [phone_number, phone_number_two],
+                                  "mailing_address" => [mailing],
+                                  "email_address" => [email_address]})
 
       expect(new_contact.first_name).to(eq("bob"))
       expect(new_contact.last_name).to(eq("jim"))
       expect(new_contact.job_title).to(eq("manager"))
       expect(new_contact.company).to(eq("water sports inc"))
       expect(new_contact.phone_number).to(eq([phone_number, phone_number_two]))
+      expect(new_contact.mailing_address).to(eq([mailing]))
+      expect(new_contact.email_address).to(eq([email_address]))
 
     end
   end
@@ -49,5 +62,15 @@ describe Phone_Number do
         expect(number.area_code).to(eq(342))
         expect(number.number).to(eq(2344321))
     end
+  end
+end
+
+describe Email_Address do
+  describe "#email_address" do
+    it 'creates an email' do
+      email = Email_Address.new( {"email_address" => "email@gmail.com"})
+      expect(email.email_address).to(eq("email@gmail.com"))
+    end
+
   end
 end

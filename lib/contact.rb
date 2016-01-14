@@ -1,11 +1,13 @@
 class Contact
-  attr_reader(:first_name, :last_name, :job_title, :company, :phone_number)
+  attr_reader(:first_name, :last_name, :job_title, :company, :phone_number, :mailing_address, :email_address)
   define_method(:initialize) do |attributes|
     @first_name = attributes.fetch("first_name")
     @last_name = attributes.fetch("last_name")
     @job_title = attributes.fetch("job_title")
     @company = attributes.fetch("company")
     @phone_number = attributes.fetch("phone")
+    @mailing_address = attributes.fetch("mailing_address")
+    @email_address = attributes.fetch("email_address")
   end
 end
 
