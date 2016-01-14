@@ -1,37 +1,56 @@
 <h1>Contact</h1>
 
-<div class="">
-  <h3 for="">First Name:</h3>
-  <h5><%= @first_name %></h5>
-</div>
-<div class="">
-  <h3 for="">Last Name:</h3>
-  <h5><%= @last_name %></h5>
-</div>
-<div class="">
-  <h3 for="">Job Title:</h3>
-  <h5><%= @job_title %></h5>
-</div>
-<div class="">
-  <h3 for="">Company:</h3>
-  <h5><%= @company %></h5>
-</div>
-
-<h3>Numbers: </h3>
- <% @phone_number.each do |number| %>
-  <ul>
-    <h5><%= number %></h5>
-  </ul>
-<%end%>
-<h3>Email: </h3>
-  <% @email_address.each do |email| %>
-  <ul>
-    <h5><%= email %></h5>
-  </ul>
-<%end%>
-<h3>Mailing: </h3>
+<h3><%= "First name: #{@first_name}" %></h3>
+<h3><%= "Last name: #{@last_name}" %></h3>
+<h3><%= "Job Title: #{@job_title}" %></h3>
+<h3><%= "Company: #{@company}" %></h3>
+<h3>Phone number list</h3>
+<ul>
+  <% @phone_number.each do |number| %>
+    <li> <%= number.number %></li>
+  <%end%>
+</ul>
+<form class="" action="/add_number/<%= @id %>" method="post">
+  <label for="">Add Number:</label>
+  <input type="text" name="phone" value="">
+  <div class="">
+    <button type="submit" name="button">Add</button>
+  </div>
+</form>
+<h3>Email list: </h3>
+<% @email_address.each do |email| %><ul><%= "Email: #{email.email_address}" %></ul><%end%>
+<form class="" action="/add_email/<%= @id %>" method="post">
+  <label for="">Add Email:</label>
+  <input type="text" name="email" value="">
+  <div class="">
+    <button type="submit" name="button">Add</button>
+  </div>
+</form>
+<h3>Mailing list: </h3>
   <% @mailing_address.each do |mail| %>
   <ul>
-    <h5><%= mail %></h5>
+    <li><%= mail.street_address %></li>
+    <li><%= mail.city %></li>
+    <li><%= mail.state %></li>
+    <li><%= mail.zip %></li>
+    <li><%= mail.type %></li>
   </ul>
-<%end%>
+  <%end%>
+<h3>Add Address:</h3>
+<form class="" action="/add_mail/<%= @id %>" method="post">
+  <label for="">Street address:</label>
+  <input type="text" name="street_address" value=""><br>
+  <label for="">City:</label>
+  <input type="text" name="city" value=""><br>
+  <label for="">State:</label>
+  <input type="text" name="state" value=""><br>
+  <label for="">Zip:</label>
+  <input type="text" name="zip" value=""><br>
+  <label for="">type:</label>
+  <input type="text" name="type" value=""><br>
+  <div class="">
+    <button type="submit" name="button">Add</button>
+  </div>
+</form>
+
+<a href="/">Home</a>

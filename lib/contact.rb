@@ -16,6 +16,18 @@ class Contact
     @@contacts.push( self )
   end
 
+  define_method(:add_phone) do |phone|
+    self.phone_number.push( phone )
+  end
+
+  define_method(:add_email) do |email|
+    self.email_address.push( email )
+  end
+
+  define_method(:add_address) do |address|
+    self.mailing_address.push(address)
+  end
+
   define_singleton_method(:add) do |contact|
     @@contacts.push(contact)
   end
